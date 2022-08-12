@@ -16,7 +16,7 @@
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
@@ -24,3 +24,21 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+:root {
+  --ion-color-chuli: #ef1859;
+  --ion-color-chuli-rgb: 239, 24, 89;
+  --ion-color-chuli-contrast: #ffffff;
+  --ion-color-chuli-contrast-rgb: 255, 255, 255;
+  --ion-color-chuli-shade: #d2154e;
+  --ion-color-chuli-tint: #f12f6a;
+}
+
+.ion-color-chuli {
+  --ion-color-base: var(--ion-color-chuli);
+  --ion-color-base-rgb: var(--ion-color-chuli-rgb);
+  --ion-color-contrast: var(--ion-color-chuli-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-chuli-contrast-rgb);
+  --ion-color-shade: var(--ion-color-chuli-shade);
+  --ion-color-tint: var(--ion-color-chuli-tint);
+}

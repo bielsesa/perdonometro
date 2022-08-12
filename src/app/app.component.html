@@ -1,29 +1,45 @@
 <ion-app>
-  <ion-split-pane contentId="main-content">
-    <ion-menu contentId="main-content" type="overlay">
-      <ion-content>
-        <ion-list id="inbox-list">
-          <ion-list-header>Inbox</ion-list-header>
-          <ion-note>hi@ionicframework.com</ion-note>
+  <ion-content [scrollEvents]="true" class="ion-justify-content-center">
+    <div slot="fixed" class="main-content">
+      <!-- <h1 position="top">Fecha</h1> -->
+      <ion-datetime position="top" presentation="month-year" color="chuli"
+        >.</ion-datetime
+      >
+      <ion-list position="bottom" id="moneditas-list">
+        <ion-list-header>Moneditas</ion-list-header>
+        <ion-item *ngFor="let moneda of monedas" lines="none">
+          <ion-icon name="bug-outline" slot="start" color="chuli">.</ion-icon>
+          <ion-label class="moneda-tipo">{{ moneda.tipo }}</ion-label>
+          <!-- <ion-label class="moneda-cantidad">{{ moneda.cantidad }}</ion-label> -->
+          <ion-input
+            type="number"
+            value="{{ moneda.cantidad }}"
+            class="moneda-cantidad"
+            (ionChange)="onCantidadChanged($event, moneda.tipo)"
+          ></ion-input>
 
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
-            <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
-              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-              <ion-label>{{ p.title }}</ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-        </ion-list>
-
-        <ion-list id="labels-list">
-          <ion-list-header>Labels</ion-list-header>
-
-          <ion-item *ngFor="let label of labels" lines="none">
-            <ion-icon slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
-            <ion-label>{{ label }}</ion-label>
-          </ion-item>
-        </ion-list>
-      </ion-content>
-    </ion-menu>
-    <ion-router-outlet id="main-content"></ion-router-outlet>
-  </ion-split-pane>
+          <ion-button
+            shape="round"
+            size="small"
+            color="chuli"
+            (click)="onAddMonedita($event, moneda.tipo)"
+            >+</ion-button
+          >
+          <ion-button
+            shape="round"
+            size="small"
+            color="chuli"
+            (click)="onSubtractMonedita($event, moneda.tipo)"
+            >-</ion-button
+          >
+        </ion-item>
+        <ion-item>
+          <ion-label>Total</ion-label>
+          <ion-label color="chuli">{{
+            total | currency: "EUR":"symbol-narrow":"1.2-2"
+          }}</ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+  </ion-content>
 </ion-app>
